@@ -3,7 +3,7 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.integer :city_id
       t.text :guess
-      t.integer :score_id
+      t.integer :game_id
       t.timestamps
     end
   end

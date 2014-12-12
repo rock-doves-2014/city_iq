@@ -1,10 +1,11 @@
 <h1>What is this? </h1>
 
 <img>
-
+<!-- Url.find_by(city_id: @city.id) -->
 
 <form action="/game/answer" method="POST">
   <input type="text" name="question[guess]" placeholder="guess">
+  <input type="hidden" name="question[city_id]" value="@city.id">
   <input type="submit" value="Guess">
 </form>
 

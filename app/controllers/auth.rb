@@ -18,3 +18,7 @@ get '/logout' do
   redirect '/'
 end
 
+get '/signup' do
+  erb :'auth/signup'
+end
+

@@ -1,10 +1,13 @@
-post '/games' do
-  @answer = City.all.shuffle.first
-  game = Game.create(score:nil, user_id: session[:user_id])
-  redirect "/games/#{game.id}"
+get '/games/new' do
+  @game = Game.create(score:nil, user_id: session[:user_id])
+  @city = City.all.shuffle.first
+  @url_array = CityLinks.new(@city.name).links
+  @pic_num = 0
+  @points = 10
+  erb :'game/question'
 end
 
-get '/games/:id' do |id|
+
 
   # Grab a question from the database
   # put it in the erb as an instance var
@@ -22,8 +25,8 @@ get '/games/:id' do |id|
       q.save
   @question
 =end
-
-
+=begin
+get '/games/:id' do |id|
   previous_wrong = Question.find_by(correct: false, game_id: id)
   if previous_wrong > 2
     @game_over = "Game over"
@@ -41,7 +44,7 @@ end
    q.save
    redirect "/games/#{q.game_id}"
  end
-
+=end
 
 
 

@@ -19,7 +19,7 @@ gem 'rake'
 gem 'shotgun'
 
 gem 'nokogiri'
-gem 'open-uri'
+
 
 group :test do
   gem 'faker'

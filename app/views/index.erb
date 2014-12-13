@@ -1,23 +1,25 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+  <h1>Welcome To CityIQ!!!</h1>
+
+  <h3>Scoreboard</h3>
 
   <table>
     <tr>
-      <th>File Description</th>
-      <th>File Location</th>
+      <td> User </td>
+      <td> Score </td>
     </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
+   <% @scoreboard.each do |game| %>
+      <tr>
+        <td> <%= game.user.name %> </td>
+        <td><%= game.score %></td>
+      </tr>
+    <% end %>
   </table>
+
+  <form action="/games" method="POST">
+    <input type='submit' value='Star New Game'>
+  </form>
+
+
+
 </div>

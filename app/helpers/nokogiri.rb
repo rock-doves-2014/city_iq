@@ -1,22 +1,15 @@
-class Scraper
+class CityLinks
 attr_reader :page, :links
 
   def initialize(location)
     @page = Nokogiri::HTML(open(link_generator(location)))
     @links = []
+    self.scrape_search_page
   end
 
   def scrape_search_page
     images_wanted = @page.css('a[data-track="photo-click"] img').map { |ele| ele["data-defer-src"]  }
     @links = images_wanted.slice(0..10)
-    # #@elements = @page.css("a[class='ui-display-link']")
-    # n = 0
-
-    # until n == 10
-    #   @links << "https:" + @elements[n].children[1].attributes['src'].value
-    #   n +=1
-    # end
-    # return @links
   end
 
   private
@@ -27,3 +20,11 @@ attr_reader :page, :links
 
 
 end
+
+# def scrape_search_page(city)
+#   page = Nokogiri::HTML(open("https://www.flickr.com/search?sort=relevance&text=" + city.gsub(" ", "%20"))
+#   images_wanted = page.css('a[data-track="photo-click"] img').map { |ele| ele["data-defer-src"]  }
+#   images_wanted.slice(0..10)
+# end
+
+

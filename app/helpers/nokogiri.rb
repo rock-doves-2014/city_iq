@@ -12,6 +12,8 @@ attr_reader :page, :links
     @links = images_wanted.slice(0..10)
   end
 
+
+
   private
 
   def link_generator(city)

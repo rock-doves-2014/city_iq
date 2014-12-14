@@ -6,7 +6,12 @@
 
 <form action="/game/answer" method="POST">
   <input type="text" name="question[guess]" placeholder="guess">
-  <input type="hidden" name="question[id]" value="@question.id">
-  <input type="hidden" name="question[game_id]" value=" <%= @game.id %> ">
   <input type="submit" value="Guess">
 </form>
+
+<form action="/games/next_clue" method="GET">
+  <input type="submit" value="Next Clue">
+</form>
+
+<p><%= @url_array %></p>
+

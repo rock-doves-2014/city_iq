@@ -9,22 +9,32 @@ get '/games/new' do
   city = Image.all.shuffle.first.city_name
   image_array = Image.all.where("city_name = ?", city)
   session[:urls] = image_array(image_array)
-  p "**************************************"
-  p session[:urls]
   erb :'game/question'
 end
 
-get '/games/:id/next_clue' do |id|
+get '/games/:id/next_clue' do
   # if current_user
     p session[:image_array]
     p session[:pic_num]
     new_pic_num = session[:pic_num].to_i + 1
     session[:pic_num] = new_pic_num
-    p "*************************************"
-    p session[:pic_num]
     erb :'game/question'
   # end
 end
+
+post '/games/:id/guess' do
+  p "*****************************"
+  @guess = params[:question].values.join.downcase
+  @answer = Image.where('url = ?', session[:urls].first)
+  if @guess == @answer.first.city_name.downcase
+    erb :'/game/correct_guess'
+  else
+    erb :'/game/incorrect_guess'
+  end
+end
+
+
+
 
 
   # Grab a question from the database

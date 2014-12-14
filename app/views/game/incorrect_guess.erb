@@ -1,0 +1,11 @@
+<h1>WRONG!</h1>
+
+<img src= <%= session[:urls][session[:pic_num]] %>>
+
+<h3> <%= @answer.first.city_name %> </h3>
+
+<h4> Your guess: <%= @guess.capitalize %> </h4>
+
+<form action="/games/<%= session[:game_id] %>/next_question" method="GET">
+  <input type="submit" value="Next Question">
+</form>

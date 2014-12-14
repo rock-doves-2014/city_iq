@@ -1,0 +1,9 @@
+<h1>Correct!</h1>
+
+<img src= <%= session[:urls][session[:pic_num]] %>>
+
+<h3> <%= @answer.first.city_name %> </h3>
+
+<form action="/games/<%= session[:game_id] %>/next_question" method="GET">
+  <input type="submit" value="Next Question">
+</form>

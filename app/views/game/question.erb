@@ -1,10 +1,10 @@
 <h1>Where is this? </h1>
 
 
-<img src= <%= session[:urls][session[:pic_num]] %>
+<img src= <%= session[:urls][session[:pic_num]] %>>
 
-<form action="/game/answer" method="POST">
-  <input type="text" name="question[guess]" placeholder="guess">
+<form action="/games/<%= session[:game_id] %>/guess" method="POST">
+  <input type="text" name="question[:guess]" placeholder="guess">
   <input type="submit" value="Guess">
 </form>
 

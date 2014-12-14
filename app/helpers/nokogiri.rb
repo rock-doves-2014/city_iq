@@ -17,7 +17,7 @@ class CityLinks
   private
 
   def link_generator(city)
-    "https://www.flickr.com/search?sort=relevance&text=" + city.gsub(" ", "%20")
+    "https://www.flickr.com/search?sort=relevance&text=" + city.gsub(" ", "%20").gsub(",", "%2C")
   end
 
 

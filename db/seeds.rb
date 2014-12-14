@@ -5,7 +5,7 @@ require 'csv'
 #   city_name_array = []
 #   file = File.open('./db/city_list.txt') do |f|
 #     f.each_line do |line|
-#       city_name_array << line.gsub(/\d{1,2}.\s{2,3}/, '').gsub(/\s\(.{1,20}\)/, '').split(", ").first
+#       city_name_array << line.gsub(/\d{1,2}.\s{2,3}/, '').gsub(/\s\(.{1,20}\)/, '')
 #     end
 #   end
 #   return city_name_array
@@ -17,12 +17,15 @@ require 'csv'
 #     csv << ["url", "city_name"]
 #   end
 #   @city_list.each do |city|
-#     CityLinks.new(city).scrape_search_page.each do |img_url|
+#     @clean_city_name = city.split(", ").first
+#     @city_search_name = city.chomp + " skyline"
+#     p @city_search_name
+#     CityLinks.new(@city_search_name).scrape_search_page.each do |img_url|
 #       CSV.open("saved_data.csv", "a+") do |csv|
-#         csv << [img_url, city]
+#         csv << [img_url, @clean_city_name]
 #       end
 #     end
-#     sleep(10)
+#     sleep(3)
 #     p "next city"
 #   end
 # end

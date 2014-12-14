@@ -65,6 +65,7 @@ get '/games/:id/next_question' do
 end
 
 get '/games/game_over' do
+  @answer = Image.where('url = ?', session[:urls].first)
   game = Game.find(session[:game_id])
   @score = game.score
   user = User.find(session[:user_id])

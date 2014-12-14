@@ -1,21 +1,11 @@
-
 require 'bcrypt'
-
-User.create(name: 'bob', password: 'fox')
-
-Game.create(score: '12', user_id: '1')
-
-Image.create(url: 'https://c1.staticflickr.com/5/4039/4628932927_20d8d0e937.jpg', city_name: 'San Francisco')
-
-Image.create(url: 'https://c2.staticflickr.com/6/5131/5480505233_2750b763a0_n.jpg
-', city_name: 'San Francisco')
-
+require 'csv'
 
 # def get_city_names
 #   city_name_array = []
-#   file = File.open('city_list.txt') do |f|
+#   file = File.open('./db/city_list.txt') do |f|
 #     f.each_line do |line|
-#       city_name_array << line.gsub(/\d{1,2}.\s{3}/, '').gsup(/\s\(.{1,20}\)/, '').split(", ").first
+#       city_name_array << line.gsub(/\d{1,2}.\s{2,3}/, '').gsub(/\s\(.{1,20}\)/, '')
 #     end
 #   end
 #   return city_name_array
@@ -23,14 +13,28 @@ Image.create(url: 'https://c2.staticflickr.com/6/5131/5480505233_2750b763a0_n.jp
 
 # def get_urls
 #   @city_list = get_city_names
+#   CSV.open("saved_data.csv", "w") do |csv|
+#     csv << ["url", "city_name"]
+#   end
 #   @city_list.each do |city|
-#     Scraper.new(city).scrape_search_page.each do |img_url|
-#       Image.new( url: img_url, city_name: city)
-#       sleep(10)
+#     @clean_city_name = city.split(", ").first
+#     @city_search_name = city.chomp + " skyline"
+#     p @city_search_name
+#     CityLinks.new(@city_search_name).scrape_search_page.each do |img_url|
+#       CSV.open("saved_data.csv", "a+") do |csv|
+#         csv << [img_url, @clean_city_name]
+#       end
 #     end
+#     sleep(3)
+#     p "next city"
 #   end
 # end
 
-
 # get_urls
 
+
+CSV.foreach("saved_data.csv") do |row|
+  new_row = Image.create( url: row.first.to_s, city_name: row.last.to_s )
+  p "new row"
+end
+p "end"

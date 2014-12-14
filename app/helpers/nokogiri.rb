@@ -1,5 +1,5 @@
 class CityLinks
-attr_reader :page, :links
+  attr_reader :page, :links
 
   def initialize(location)
     @page = Nokogiri::HTML(open(link_generator(location)))
@@ -17,7 +17,7 @@ attr_reader :page, :links
   private
 
   def link_generator(city)
-    "https://www.flickr.com/search?sort=relevance&text=" + city.gsub(" ", "%20")
+    "https://www.flickr.com/search?sort=relevance&text=" + city.gsub(" ", "%20").gsub(",", "%2C")
   end
 
 

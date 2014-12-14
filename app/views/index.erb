@@ -8,11 +8,13 @@
       <td> User </td>
       <td> Score </td>
     </tr>
-   <% @scoreboard.each do |game| %>
+    <% @scoreboard.each do |game| %>
+    <% if game.user %>
       <tr>
         <td> <%= game.user.name %> </td>
         <td><%= game.score %></td>
       </tr>
+    <% end %>
     <% end %>
   </table>
 

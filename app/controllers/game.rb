@@ -41,6 +41,10 @@ end
 post '/games/:id/guess' do
   @guess = params[:question].values.join.downcase
   @answer = Image.where('url = ?', session[:urls].first)
+  puts "answer"
+  p @answer.first.city_name.downcase
+  puts "*" * 30
+  puts @guess
   if @guess == @answer.first.city_name.downcase
     game = Game.find(session[:game_id])
     game.score += (10 - session[:pic_num].to_i)

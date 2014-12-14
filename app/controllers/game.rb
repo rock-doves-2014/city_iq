@@ -7,7 +7,10 @@ get '/games/new' do
   session[:pic_num] = 0
   session[:game_id] = Game.create(score: nil, user_id: session[:user_id]).id
   city = Image.all.shuffle.first.city_name
-  session[:image_array] = Image.all.where("city_name = ?", city)
+  image_array = Image.all.where("city_name = ?", city)
+  session[:urls] = image_array(image_array)
+  p "**************************************"
+  p session[:urls]
   erb :'game/question'
 end
 

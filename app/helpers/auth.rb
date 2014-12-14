@@ -14,4 +14,10 @@ helpers do
     @image ||= Image.find(session[:image_id]) if session[:image_id]
   end
 
+  def image_array(image_array)
+    image_array.map do |object|
+      object.url
+    end
+  end
+
 end

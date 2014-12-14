@@ -1,11 +1,7 @@
 <h1>Where is this? </h1>
 
 
-<img src= <%= session[:image_array][session[:pic_num]].url %>
-
-
-
- --><!-- Url.find_by(city_id: @city.id) -->
+<img src= <%= session[:urls][session[:pic_num]] %>
 
 <form action="/game/answer" method="POST">
   <input type="text" name="question[guess]" placeholder="guess">

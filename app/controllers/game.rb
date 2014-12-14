@@ -1,10 +1,12 @@
 get '/games/new' do
-  game = Game.create(score:nil, user_id: session[:user_id])
-  session[:game_id] = game.id
-  @current_city = City.all.shuffle.first
-  session[:city_id] = @current_city.id
-  @url_array = CityLinks.new(@current_city.name).links
-  session[:pic_num] = 0
+  # game = Game.create(score:nil, user_id: session[:user_id])
+  # session[:game_id] = game.id
+  # @current_city = City.all.shuffle.first
+  # session[:city_id] = @current_city.id
+  # @url_array = CityLinks.new(@current_city.name).links
+  # session[:pic_num] = 0
+  session[:game_id] = Game.create(score: nil, pic_num: 0, user_id: session[:user_id]).id
+  session[:image_id] = Image.all.shuffle.first.id
   erb :'game/question'
 end
 

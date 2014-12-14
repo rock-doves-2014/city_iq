@@ -7,11 +7,11 @@ helpers do
   end
 
   def current_game
-    @game ||= Game.find(session[:game_id] if session[:game_id])
+    @game ||= Game.find(session[:game_id]) if session[:game_id]
   end
 
   def current_image
-    @image ||= Image.find(session[:image_id] if session[:image_id])
+    @image ||= Image.find(session[:image_id]) if session[:image_id]
   end
 
 end

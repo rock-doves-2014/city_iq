@@ -1,5 +1,5 @@
 class CityLinks
-attr_reader :page, :links
+  attr_reader :page, :links
 
   def initialize(location)
     @page = Nokogiri::HTML(open(link_generator(location)))

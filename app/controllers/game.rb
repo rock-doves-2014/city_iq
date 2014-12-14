@@ -4,19 +4,23 @@ get '/games/new' do
   # @current_city = City.all.shuffle.first
   # session[:city_id] = @current_city.id
   # @url_array = CityLinks.new(@current_city.name).links
-  # session[:pic_num] = 0
-  session[:game_id] = Game.create(score: nil, pic_num: 0, user_id: session[:user_id]).id
-  session[:image_id] = Image.all.shuffle.first.id
+  session[:pic_num] = 0
+  session[:game_id] = Game.create(score: nil, user_id: session[:user_id]).id
+  city = Image.all.shuffle.first.city_name
+  session[:image_array] = Image.all.where("city_name = ?", city)
   erb :'game/question'
 end
 
 get '/games/:id/next_clue' do |id|
-  if current_user
-    @pic_num = session[:pic_num] + 1
-    @url_array =
-    @game_id = params['game']['game_id']
+  # if current_user
+    p session[:image_array]
+    p session[:pic_num]
+    new_pic_num = session[:pic_num].to_i + 1
+    session[:pic_num] = new_pic_num
+    p "*************************************"
+    p session[:pic_num]
     erb :'game/question'
-  end
+  # end
 end
 
 

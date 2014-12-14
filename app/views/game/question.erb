@@ -4,14 +4,13 @@
 <img src= <%=Image.find(session[:image_id]).url%> >
 <!-- Url.find_by(city_id: @city.id) -->
 
-<!-- <form action="/game/answer" method="POST">
+<form action="/game/answer" method="POST">
   <input type="text" name="question[guess]" placeholder="guess">
   <input type="submit" value="Guess">
 </form>
 
-<form action="/games/next_clue" method="GET">
+<form action="/games/<%= session[:game_id] %>/next_clue" method="GET">
   <input type="submit" value="Next Clue">
 </form>
 
-<p><%= @url_array %></p> -->
 

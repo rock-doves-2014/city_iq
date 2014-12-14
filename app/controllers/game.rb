@@ -12,7 +12,6 @@ end
 
 get '/games/:id/next_clue' do |id|
   if current_user
-    @game = Game.find(session[:game_id])
     @pic_num = session[:pic_num] + 1
     @url_array =
     @game_id = params['game']['game_id']

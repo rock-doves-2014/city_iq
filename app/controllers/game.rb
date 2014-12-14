@@ -4,8 +4,9 @@ get '/games/new' do
   # @current_city = City.all.shuffle.first
   # session[:city_id] = @current_city.id
   # @url_array = CityLinks.new(@current_city.name).links
+  session[:incorrect_guess] = 0
   session[:pic_num] = 0
-  session[:game_id] = Game.create(score: nil, user_id: session[:user_id]).id
+  session[:game_id] = Game.create(score: 0, user_id: session[:user_id]).id
   city = Image.all.shuffle.first.city_name
   image_array = Image.all.where("city_name = ?", city)
   session[:urls] = image_array(image_array)
@@ -16,21 +17,59 @@ get '/games/:id/next_clue' do
   # if current_user
     p session[:image_array]
     p session[:pic_num]
-    new_pic_num = session[:pic_num].to_i + 1
-    session[:pic_num] = new_pic_num
+    session[:pic_num] = session[:pic_num].to_i + 1
     erb :'game/question'
   # end
 end
 
+# get '/game/correct_guess' do
+
+#   game = Game.find(session[:game_id])
+#   game.score += (10 - session[:pic_num].to_i)
+#   erb :'/game/correct_guess'
+# end
+
+# get '/game/incorrect_guess' do
+#   session[:incorrect_guess] = session[:incorrect_guess].to_i + 1
+#   if session[:incorrect_guess] > 2
+#     redirect '/games/game_over'
+#   else
+#     erb :'/game/incorrect_guess'
+#   end
+# end
+
 post '/games/:id/guess' do
-  p "*****************************"
   @guess = params[:question].values.join.downcase
   @answer = Image.where('url = ?', session[:urls].first)
   if @guess == @answer.first.city_name.downcase
+    game = Game.find(session[:game_id])
+    game.score += (10 - session[:pic_num].to_i)
+    game.save
     erb :'/game/correct_guess'
   else
-    erb :'/game/incorrect_guess'
+    session[:incorrect_guess] = session[:incorrect_guess].to_i + 1
+    if session[:incorrect_guess] > 2
+      redirect '/games/game_over'
+    else
+      erb :'/game/incorrect_guess'
+    end
   end
+end
+
+get '/games/:id/next_question' do
+  session[:pic_num] = 0
+  city = Image.all.shuffle.first.city_name
+  image_array = Image.all.where("city_name = ?", city)
+  session[:urls] = image_array(image_array)
+   erb :'game/question'
+end
+
+get '/games/game_over' do
+  game = Game.find(session[:game_id])
+  @score = game.score
+  user = User.find(session[:user_id])
+  @name = user.name
+  erb :'game/game_over'
 end
 
 

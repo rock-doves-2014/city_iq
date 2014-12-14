@@ -1,5 +1,5 @@
 get '/' do
-  @scoreboard = Game.all
+  @scoreboard = Game.order(score: :desc).limit(10)
   erb :index
 end
 

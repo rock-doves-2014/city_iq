@@ -11,11 +11,12 @@ require 'bcrypt'
 # ', city_name: 'San Francisco')
 
 
-
 def get_city_names
   city_name_array = []
-  File.readlines('city_list.txt').each do |line|
-    city_name_array << line.gsub(/\d{1,2}.\s{3}/, '').gsup(/\s\(.{1,20}\)/, '').split(", ").first
+  file = File.open('city_list.txt') do |f|
+    f.each_line do |line|
+      city_name_array << line.gsub(/\d{1,2}.\s{3}/, '').gsup(/\s\(.{1,20}\)/, '').split(", ").first
+    end
   end
   return city_name_array
 end

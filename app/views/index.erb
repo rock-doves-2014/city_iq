@@ -3,23 +3,34 @@
   <h1>CityIQ</h1>
 </div>
 
-<div class="container">
-  <h3>Scoreboard</h3>
+<div class="photo-banner">
+  <img src="http://s3.postimg.org/8gf85q75d/bannerpic.jpg">
+</div>
 
-  <table>
-    <tr>
-      <td> User </td>
-      <td> Score </td>
-    </tr>
-    <% @scoreboard.each do |game| %>
-    <% if game.user %>
+<div class="container">
+<div id="welcome">
+  <h2>Test Your Knowledge!</h2>
+  <p>With this fun and educational game, you and your students can learn to impress your friends by knowing a bunch of city skylines!</p>
+</div>
+
+  <div id="scoreboard"><h3>Scoreboard</h3>
+
+    <table>
       <tr>
-        <td> <%= game.user.name %> </td>
-        <td><%= game.score %></td>
+        <td> User </td>
+        <td> Score </td>
       </tr>
-    <% end %>
-    <% end %>
-  </table>
+      <% @scoreboard.each do |game| %>
+      <% if game.user %>
+        <tr>
+          <td> <%= game.user.name %> </td>
+          <td><%= game.score %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </table>
+  </div>
+
 </div>
 
 <div class="footer">

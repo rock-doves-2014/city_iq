@@ -1,9 +1,97 @@
+body {
+  background-color: rgb(7, 33, 58);
+  color:gray;
+}
+
+#login-toolbar {
+  font-family: -webkit-pictograph;
+  font-style: oblique;
+}
+
+#login-toolbar a {
+  text-decoration: none;
+  color: gray;
+}
+
+.photo-banner {
+  width:100%;
+  height: 200px;
+  position: relative;
+  z-index: -1;
+}
+
+.photo-banner img {
+    width: 100%;
+    height: auto;
+}
+
+.header {
+  width: 100%;
+  height: 20%;
+  background-color: rgba(7, 6, 5, 0.79);
+  position: relative;
+  top:-40px;
+  text-align: right;
+  border-bottom: 2px solid white;
+  left: 0;
+  z-index: -1;
+}
+
+.header h1 {
+  font-variant: small-caps;
+  font-family: initial;
+}
 .container {
   margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  width: 98%;
+  height: 120px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 90px;
 }
+
+#welcome {
+  width: 60%;
+  text-align: center;
+  border: 2px solid white;
+  display: inline-block;
+  float: left;
+  background-color: rgba(7, 6, 5, 0.79);
+}
+
+#scoreboard {
+  width: 38%;
+  text-align: center;
+  border: 2px solid white;
+  display: inline-block;
+  float: right;
+  background-color: rgba(7, 6, 5, 0.79);
+}
+
+
+.container table {
+  margin: auto;
+}
+
+.footer {
+  width: 100%;
+  height: 10%;
+  background-color: rgba(7, 6, 5, 0.79);
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  border-top: 1px solid white;
+}
+
+#button {
+  border-radius: 6px;
+  background-color: black;
+  color: white;
+  border-color: 1px solid black;
+  margin-top: 5px;
+}
+
 th {
   text-align: left;
 }

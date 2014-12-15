@@ -1,26 +1,42 @@
+
+<div class="header">
+  <h1>CityIQ</h1>
+</div>
+
+<div class="photo-banner">
+  <img src="http://s3.postimg.org/8gf85q75d/bannerpic.jpg">
+</div>
+
 <div class="container">
-  <h1>Welcome To CityIQ!!!</h1>
+<div id="welcome">
+  <h2>Test Your Knowledge!</h2>
+  <p>With this fun and educational game, you and your students can learn to impress your friends by knowing a bunch of city skylines!</p>
+</div>
 
-  <h3>Scoreboard</h3>
+  <div id="scoreboard"><h3>Scoreboard</h3>
 
-  <table>
-    <tr>
-      <td> User </td>
-      <td> Score </td>
-    </tr>
-    <% @scoreboard.each do |game| %>
-    <% if game.user %>
+    <table>
       <tr>
-        <td> <%= game.user.name %> </td>
-        <td><%= game.score %></td>
+        <td> User </td>
+        <td> Score </td>
       </tr>
-    <% end %>
-    <% end %>
-  </table>
+      <% @scoreboard.each do |game| %>
+      <% if game.user %>
+        <tr>
+          <td> <%= game.user.name %> </td>
+          <td><%= game.score %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </table>
+  </div>
 
+</div>
+
+<div class="footer">
   <form action="/games/new" method="GET">
-    <input type='submit' value='Start New Game'>
-  </form>
+      <input type='submit' value='Start New Game' id="button">
+    </form>
 
 
 

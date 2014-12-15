@@ -5,7 +5,7 @@ require 'csv'
 #   city_name_array = []
 #   file = File.open('./db/city_list.txt') do |f|
 #     f.each_line do |line|
-#       city_name_array << line.gsub(/\d{1,2}.\s{2,3}/, '').gsub(/\s\(.{1,20}\)/, '')
+#       city_name_array << line.gsub(/\d{1,3}.\s{2,3}/, '').gsub(/\s\(.{1,20}\)/, '')
 #     end
 #   end
 #   return city_name_array

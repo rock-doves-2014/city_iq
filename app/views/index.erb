@@ -33,10 +33,12 @@
 
 </div>
 
+ <% if current_user %>
 <div class="footer">
   <form action="/games/new" method="GET">
       <input type='submit' value='Start New Game' id="button">
     </form>
+ <% end %>
 
 
 

@@ -1,11 +1,26 @@
-<h1>WRONG!</h1>
+<div class="header">
+  <h1>CityIQ</h1>
+</div>
 
-<img src= <%= session[:urls][session[:pic_num]] %>>
 
-<h3> <%= @answer.first.city_name %> </h3>
+<div class="container">
+
+  <div id="left-box">
+    <h2>Wrong!</h2>
+  </div>
+
+  <div id="main-img">
+    <img src= <%= session[:urls][session[:pic_num]] %>>
+  </div>
+
+</div>
+<div id="answer-section">
+<h3>The Correct City was <%= @answer.first.city_name %>. </h3>
 
 <h4> Your guess: <%= @guess.capitalize %> </h4>
-
+</div>
+<div class="footer">
 <form action="/games/<%= session[:game_id] %>/next_question" method="GET">
   <input type="submit" value="Next Question">
 </form>
+</div>

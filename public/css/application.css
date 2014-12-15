@@ -44,7 +44,7 @@ body {
 .container {
   margin: 20px auto;
   width: 98%;
-  height: 120px;
+  height: 130px;
   text-align: center;
   position: absolute;
   bottom: 0;
@@ -75,14 +75,32 @@ body {
 }
 
 .footer {
+  display: block;
   width: 100%;
-  height: 10%;
+  height: 90px;
   background-color: rgba(7, 6, 5, 0.79);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   text-align: center;
   border-top: 1px solid white;
 }
+
+.footer input {
+  border-radius: 5px;
+}
+
+#answer-section {
+  width: 30%;
+  text-align: center;
+  border: 2px solid white;
+  display: block;
+  float: left;
+  top: 150px;
+  position: relative;
+  background-color: rgba(7, 6, 5, 0.79);
+  border-radius: 5px;
+}
+
 
 #button {
   border-radius: 6px;
@@ -94,4 +112,31 @@ body {
 
 th {
   text-align: left;
+}
+
+#main-img {
+  width: 60%;
+  height: 600px;
+  bottom: 380px;
+  position: relative;
+  left: 500px;
+}
+
+
+#main-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+#left-box {
+  width: 30%;
+  text-align: center;
+  border: 2px solid white;
+  display: block;
+  float: left;
+  position: relative;
+  background-color: rgba(7, 6, 5, 0.79);
+  bottom: 330px;
+  border-radius: 5px;
 }

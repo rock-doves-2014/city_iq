@@ -1,15 +1,30 @@
-<h1>Where is this? </h1>
+<div class="header">
+  <h1>CityIQ</h1>
+</div>
 
 
-<img src= <%= session[:urls][session[:pic_num]] %>>
+<div class="container">
 
-<form action="/games/<%= session[:game_id] %>/guess" method="POST">
-  <input type="text" name="question[:guess]" placeholder="guess">
-  <input type="submit" value="Guess">
-</form>
+  <div id="left-box">
+    <h2>Where is this?</h2>
+  </div>
 
-<form action="/games/<%= session[:game_id] %>/next_clue" method="GET">
-  <input type="submit" value="Next Clue">
-</form>
+  <div id="main-img">
+    <img src= <%= session[:urls][session[:pic_num]] %>>
+  </div>
 
+</div>
+
+<div class="footer">
+
+  <form action="/games/<%= session[:game_id] %>/guess" method="POST">
+    <input type="text" name="question[:guess]" placeholder="Write Your Guess Here">
+    <input type="submit" value="Guess">
+  </form>
+
+  <form action="/games/<%= session[:game_id] %>/next_clue" method="GET">
+    <input type="submit" value="Next Clue">
+  </form>
+
+</div>
 
